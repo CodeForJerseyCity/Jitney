@@ -51,7 +51,7 @@
   <h2>Map of Jitney Lines</h2>
   <div class="map">
 
-    <div id="map" style="width: 100%; height: 400px"></div>
+<div id="map" style="width: 100%; height: 400px"></div>
 
 	<script src="jitney.json" type="text/javascript"></script>
 	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
@@ -68,6 +68,8 @@
 			id: 'examples.map-20v6611k'
 		}).addTo(map);
 
+
+
 		function onEachFeature(feature, layer) {
 			var popupContent = "<p>I started out as a GeoJSON " +
 					feature.geometry.type + ", but now I'm a Leaflet vector!</p>";
@@ -79,10 +81,30 @@
 			layer.bindPopup(popupContent);
 		}
 
-		L.geoJson(jitneyBus, {
 
-			onEachFeature: onEachFeature
-		}).addTo(map);
+
+
+
+		L.geoJson(jitneyBus, {
+    style: function(feature) {
+        switch (feature.properties.bus_line) {
+            case 'kennedy_blvd': return {color: "#8dd3c7"};
+            case 'bayonne_journal':   return {color: "#ffffb3"};
+            case 'ny_42_street': return {color: "#bebada"};
+            case 'bergenline':   return {color: "#fb8072"};
+            case 'blvd_east': return {color: "#80b1d3"};
+            case 'fairview':   return {color: "#fdb462"};
+            case 'kennedy_pa': return {color: "#b3de69"};
+            case 'ny_paterson_gwb':   return {color: "#fccde5"};
+            case 'paterson_pa': return {color: "#d9d9d9"};
+            case 'river_road':   return {color: "#bc80bd"};
+            case '60_street': return {color: "#ccebc5"};
+        }
+    },
+    onEachFeature: onEachFeature
+}).addTo(map);
+
+
 
 	</script>
 
