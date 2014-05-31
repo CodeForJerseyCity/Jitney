@@ -11,13 +11,14 @@
 
   <link rel='stylesheet prefetch' href='http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css'>
 <link rel='stylesheet prefetch' href='http://netdna.bootstrapcdn.com/bootswatch/3.1.1/united/bootstrap.min.css'>
+<link rel="stylesheet" href="css/styles.css">
 
 </head>
 
 <body>
 
   <div class="container">
-  <h1 style="margin-bottom:20px;">Jitney Buses of New Jersey</h1>
+  <h1>Jitney Buses of New Jersey</h1>
 </div>
 
 <div class="container">
@@ -57,57 +58,6 @@
 	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
 <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 
-	<script>
-		var map = L.map('map').setView([40.7675 , -74.0323], 11);
-
-		L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
-			maxZoom: 18,
-			attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-				'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-				'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-			id: 'examples.map-20v6611k'
-		}).addTo(map);
-
-
-
-		function onEachFeature(feature, layer) {
-			var popupContent = "<p>I started out as a GeoJSON " +
-					feature.geometry.type + ", but now I'm a Leaflet vector!</p>";
-
-			if (feature.properties && feature.properties.Name) {
-				popupContent += feature.properties.Name;
-			}
-
-			layer.bindPopup(popupContent);
-		}
-
-
-
-
-
-		L.geoJson(jitneyBus, {
-    style: function(feature) {
-        switch (feature.properties.bus_line) {
-            case 'kennedy_blvd': return {color: "#8dd3c7"};
-            case 'bayonne_journal':   return {color: "#ffffb3"};
-            case 'ny_42_street': return {color: "#bebada"};
-            case 'bergenline':   return {color: "#fb8072"};
-            case 'blvd_east': return {color: "#80b1d3"};
-            case 'fairview':   return {color: "#fdb462"};
-            case 'kennedy_pa': return {color: "#b3de69"};
-            case 'ny_paterson_gwb':   return {color: "#fccde5"};
-            case 'paterson_pa': return {color: "#d9d9d9"};
-            case 'river_road':   return {color: "#bc80bd"};
-            case '60_street': return {color: "#ccebc5"};
-        }
-    },
-    onEachFeature: onEachFeature
-}).addTo(map);
-
-
-
-	</script>
-
   </div>
 </div>
 
@@ -118,7 +68,7 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+        <a data-toggle="collapse" data-parent="#accordion" data-route="bayonne_journal" href="#collapseOne">
           Bayonne – Journal Square
         </a>
       </h4>
@@ -141,8 +91,8 @@
   <!--panel 2-->
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+      <h4 class="panel-title"> 
+        <a data-toggle="collapse" data-parent="#accordion"  data-route="bergenline" href="#collapseTwo">
           Bergenline – Port Authority
         </a>
       </h4>
@@ -200,12 +150,12 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+        <a data-toggle="collapse" data-parent="#accordion" data-route="blvd_east" href="#collapseFour">
           Boulevard East – Port Authority
         </a>
       </h4>
     </div>
-    <div id="collapseTwo" class="panel-collapse collapse">
+    <div id="collapseFour" class="panel-collapse collapse">
       <div class="panel-body">
 <p>North Bergen – Guttenberg – West New York- Weehawken – New York</p>
 
@@ -232,12 +182,12 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+        <a data-toggle="collapse" data-parent="#accordion" data-route="fairview" href="#collapseFive">
           Fairview Avenue
         </a>
       </h4>
     </div>
-    <div id="collapseTwo" class="panel-collapse collapse">
+    <div id="collapseFive" class="panel-collapse collapse">
       <div class="panel-body">
 <p>Jersey City – Union City – West New York – Guttenberg – North Bergen – Fairview – Ridgefield – Palisades Park</p>
 
@@ -255,12 +205,12 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+        <a data-toggle="collapse" data-parent="#accordion" data-route="kennedy_blvd" href="#collapseSix">
           Kennedy Boulevard
         </a>
       </h4>
     </div>
-    <div id="collapseTwo" class="panel-collapse collapse">
+    <div id="collapseSix" class="panel-collapse collapse">
       <div class="panel-body">
 <p>Jersey City – Union City – West New York – Guttenberg – North Bergen</p>
 
@@ -282,12 +232,12 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+        <a data-toggle="collapse" data-parent="#accordion" data-route="kennedy_pa" href="#collapseSeven">
           Kennedy Boulevard – Port Authority
         </a>
       </h4>
     </div>
-    <div id="collapseTwo" class="panel-collapse collapse">
+    <div id="collapseSeven" class="panel-collapse collapse">
       <div class="panel-body">
 <p>Jersey City – Union City – New York</p>
 
@@ -309,12 +259,12 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+        <a data-toggle="collapse" data-parent="#accordion" data-route="" href="#collapseEight">
           Palisades Park – Fort Lee – Flushing
         </a>
       </h4>
     </div>
-    <div id="collapseTwo" class="panel-collapse collapse">
+    <div id="collapseEight" class="panel-collapse collapse">
       <div class="panel-body">
 <p> This route is different from other Jitney routes in northern New Jersey.  It runs on a published schedule and is operated by a company called Tourline Travel and Tour.  It also only accepts passengers at a few stops.</p>
 
@@ -334,12 +284,12 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+        <a data-toggle="collapse" data-parent="#accordion" data-route="ny_paterson_gwb" href="#collapseNine">
           Paterson – George Washington Bridge
         </a>
       </h4>
     </div>
-    <div id="collapseTwo" class="panel-collapse collapse">
+    <div id="collapseNine" class="panel-collapse collapse">
       <div class="panel-body">
 <p>Paterson – Elmwood Park – Fair Lawn – Paramus – Hackensack – Teaneck – Englewood – Fort Lee – New York</p>
 
@@ -363,12 +313,12 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+        <a data-toggle="collapse" data-parent="#accordion" data-route="paterson_pa" href="#collapseTen">
           Paterson – Port Authority
         </a>
       </h4>
     </div>
-    <div id="collapseTwo" class="panel-collapse collapse">
+    <div id="collapseTen" class="panel-collapse collapse">
       <div class="panel-body">
 <p>Paterson – Clifton – Passaic – Secaucus – Union City – New York</p>
 
@@ -398,12 +348,12 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+        <a data-toggle="collapse" data-parent="#accordion" data-route="river_road" href="#collapseEleven">
           River Road- Port Authority
         </a>
       </h4>
     </div>
-    <div id="collapseTwo" class="panel-collapse collapse">
+    <div id="collapseEleven" class="panel-collapse collapse">
       <div class="panel-body">
 <p>New York – Weehawken – West New York – Guttenberg – North Bergen – Edgewater – Fort Lee</p>
 
@@ -423,12 +373,12 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+        <a data-toggle="collapse" data-parent="#accordion" data-route="60_street" href="#collapseTwelve">
           60th Street – River Road – George Washington Bridge
         </a>
       </h4>
     </div>
-    <div id="collapseTwo" class="panel-collapse collapse">
+    <div id="collapseTwelve" class="panel-collapse collapse">
       <div class="panel-body">
 <p>West New York – Guttenberg – North Bergen – Edgewater – Fort Lee – New York</p>
 
@@ -448,7 +398,7 @@
 
   <script src='http://codepen.io/assets/libs/fullpage/jquery.js'></script>
   <script src='http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js'></script>
-
+  <script src="js/app.js"></script>
 </body>
 
 </html>
