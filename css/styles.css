@@ -4,3 +4,20 @@ h1{margin-bottom:20px;}
 	width: 100%;
 	display: block;
 }
+
+footer{
+	text-align: center;
+}
+
+footer ul li{
+		display: inline;
+		margin: 0 1% 5% 1%;
+}
+
+footer ul li a{
+	display: inline-block;
+}
+
+footer ul li:first{
+	list-style: none;
+}
